@@ -1,6 +1,8 @@
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+)
 
 // basic
 type User struct {
@@ -11,6 +13,8 @@ type User struct {
 // a blog post
 type Post struct {
 	gorm.Model
-	AuthorId uint `json:"author_id"`
-	Author   User `gorm:"embedded;embeddedPrefix:author_;foreignKey:AuthorId json:"author"`
+	AuthorId uint   `json:"author_id"`
+	Author   User   `gorm:"embedded;embeddedPrefix:author_;foreignKey:AuthorId json:"author"`
+	Title    string `gorm:"not null;unique" json:"title"`
+	Content  string `gorm:"not null;" json:"content"`
 }
