@@ -14,8 +14,9 @@ func Routes() *chi.Mux {
 	r.Get("/api/user/{id}", controllers.GetUserWithId)
 	r.Delete("/api/user/{id}", controllers.DeleteUserWithId)
 	r.Put("/api/user/{id}", controllers.UpdateUserWithId)
-	r.Post("/api/user/", controllers.NewUser)
+	r.Post("/api/user", controllers.NewUser)
 
+	r.Get("/api/post/all/", controllers.GetAllPosts)
 	r.Get("/api/post/{id}", controllers.GetPostWithId)
 	r.Delete("/api/post/{id}", controllers.DeletePostWithId)
 	r.Put("/api/post/{id}", controllers.UpdatePostWithId)

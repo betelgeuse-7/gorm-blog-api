@@ -26,8 +26,6 @@ func NewUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("added user with id %d\n", user.ID)
-
 	w.WriteHeader(http.StatusCreated)
 }
 
@@ -64,7 +62,7 @@ func DeleteUserWithId(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	db := models.GetDB()
-	res := db.Delete(&models.User{}, userId)
+	res := db.Debug().Delete(&models.User{}, userId)
 	if err := res.Error; err != nil {
 		errStr := res.Error.Error()
 		http.Error(w, errStr, http.StatusBadRequest)

@@ -4,17 +4,15 @@ import (
 	"gorm.io/gorm"
 )
 
-// basic
 type User struct {
 	gorm.Model
-	Username string `gorm:"not null;unique" json:"username"`
+	Username string `gorm:"not null;unique"`
 }
 
-// a blog post
 type Post struct {
 	gorm.Model
-	AuthorId uint   `json:"author_id"`
-	Author   User   `gorm:"embedded;embeddedPrefix:author_;foreignKey:AuthorId json:"author"`
-	Title    string `gorm:"not null;unique" json:"title"`
-	Content  string `gorm:"not null;" json:"content"`
+	AuthorID uint
+	Author   User
+	Title    string `gorm:"not null;unique"`
+	Content  string `gorm:"not null;"`
 }
